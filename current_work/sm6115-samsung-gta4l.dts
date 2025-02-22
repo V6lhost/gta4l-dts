@@ -1,0 +1,28 @@
+/dts-v1/;
+
+#include "sm6115.dtsi"
+#include <dt-bindings/arm/qcom,ids.h>
+
+/ {
+	model = "Samsung Galaxy Tab A7 LTE";
+	compatible = "samsung,gta4l", "qcom,sm6115";
+	chassis-type = "handset";
+
+	qcom,msm-id = <QCOM_ID_SM6115 0x10000>;
+
+	chosen {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		framebuffer0: framebuffer@5c000000 {
+			compatible = "simple-framebuffer";
+			reg = <0x0 0x5c000000 0x0 (2000 * 1200 * 4)>;
+			width = <2000>;
+			height = <1200>;
+			stride = <(2000 * 4)>;
+			format = "a8r8g8b8";
+			clocks = <&gcc GCC_DISP_HF_AXI_CLK>;
+		};
+	};
+};
